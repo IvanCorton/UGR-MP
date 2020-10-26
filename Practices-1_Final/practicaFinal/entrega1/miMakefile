@@ -1,0 +1,23 @@
+#fichero miMakefile
+INCLUDE = ./include
+OBJ = ./obj
+SRC = ./src
+BIN = ./bin
+
+all : $(BIN)/pruebas
+
+$(BIN)/pruebas : $(OBJ)/pruebas.o $(OBJ)/PoliReg.o $(OBJ)/Punto2D.o
+	  g++ -o $(BIN)/pruebas $(OBJ)/*.o 
+	  
+$(OBJ)/pruebas.o : $(SRC)/pruebas.cpp $(INCLUDE)/PoliReg.h $(INCLUDE)/Punto2D.h
+	  g++ -c  -g -I$(INCLUDE) $(SRC)/pruebas.cpp -o $(OBJ)/pruebas.o
+
+$(OBJ)/Punto2D.o : $(SRC)/Punto2D.cpp $(INCLUDE)/Punto2D.h
+	  g++ -c -g -I$(INCLUDE) $(SRC)/Punto2D.cpp -o $(OBJ)/Punto2D.o
+
+$(OBJ)/PoliReg.o : $(SRC)/PoliReg.cpp $(INCLUDE)/PoliReg.h $(INCLUDE)/Punto2D.h
+	  g++ -c -g -I$(INCLUDE) $(SRC)/PoliReg.cpp -o $(OBJ)/PoliReg.o
+
+	  
+clean :
+	rm $(OBJ)/*.o
