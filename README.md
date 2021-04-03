@@ -1,2 +1,2 @@
 # UGR-MP
-Programming Methodology - Practices
+Resources from Programming Methodology - Practices (University of Granada)
